@@ -1,0 +1,13 @@
+#!/bin/bash
+source venv/bin/activate
+
+export DJANGO_SECRET_KEY='' \
+DATABASE_NAME='' \
+DATABASE_USER='' \
+DATABASE_PASSWORD='' \
+
+if [ $# -eq 0 ]; then
+    exec gunicorn core.wsgi --bind=unix:$SOCKFILE
+else
+    exec ./manage.py $*
+fi
