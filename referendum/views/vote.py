@@ -1,2 +1,2 @@
-def vote(request, token):
+def vote(request):
     pass
