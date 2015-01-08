@@ -48,13 +48,31 @@ body > header {
 }
 
 .ballot {
+    @include span-columns(12);
 
-    .ballot-copy {
-        @include span-columns(6);
+    $ballot-padding: 1.5em;
+
+    .ballot-copy, .ballot-form {
+        padding-left: $ballot-padding;
+        padding-right: $ballot-padding;
     }
 
-    .ballot-form {
-        @include span-columns(6);
+    @include media($large-screen) {
+        background: white;
+        border-radius: 2px;
+        box-shadow: 0 2px 10px 0 rgba(0, 0, 0, .16), 0 2px 5px 0 rgba(0, 0, 0, .26);
+        padding-bottom: $ballot-padding;
+        padding-top: $ballot-padding;
+
+        .ballot-copy {
+            @include span-columns(6 of 12);
+            padding-right: 0;
+        }
+
+        .ballot-form {
+            @include span-columns(6 of 12);
+            padding-left: 0;
+        }
     }
 }
 
