@@ -1,7 +1,7 @@
 // Typography
 $sans-serif: $helvetica;
 $serif: $georgia;
-$base-font-family: $sans-serif;
+$base-font-family: $sans-serif, "Source Han Sans TC";
 $header-font-family: $base-font-family;
 
 // Font Sizes
@@ -27,9 +27,9 @@ $blue: #477DCA;
 $dark-gray: #333;
 $medium-gray: #999;
 $light-gray: #DDD;
-$light-red: #FBE3E4;
-$light-yellow: #FFF6BF;
-$light-green: #E6EFC2;
+$light-red: #FF5252;
+$light-yellow: #FFEA00;
+$light-green: #8BC34A;
 $green: #4CAF50;
 
 // Background Color

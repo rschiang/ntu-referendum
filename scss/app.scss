@@ -35,14 +35,14 @@ body > header {
     position: relative;
 
     &:before {
-        border: 2px $base-font-color solid;
+        border: .15em $base-font-color solid;
         border-radius: 50%;
         display: inline-block;
         content: ' ';
         height: 1.5em;
-        left: 1px;
+        left: .0625em;
         position: absolute;
-        top: -2px;
+        top: -.125em;
         width: 1.5em;
     }
 }
@@ -71,8 +71,108 @@ body > header {
 
         .ballot-form {
             @include span-columns(6 of 12);
-            padding-left: 0;
+            padding-left: .5em;
+            padding-right: 2.5em;
         }
+    }
+}
+
+.ballot-copy {
+    h3 {
+        text-align: center;
+        font-weight: bold;
+        padding-bottom: 1rem;
+    }
+
+    .number {
+        border: .15em $base-font-color solid;
+        border-radius: 50%;
+        display: block;
+        height: 1.5em;
+        margin: auto auto 0.5rem auto;
+        width: 1.5em;
+    }
+
+    .intro-text {
+        font-weight: 600;
+    }
+
+    .label {
+        background: $alert-color;
+        border-radius: 4px;
+        color: white;
+        font-weight: bold;
+        padding: 0.2em 0.5em;
+
+        &.positive { background: $success-color; }
+        &.negative { background: $error-color; }
+    }
+}
+
+.ballot-form {
+    h6 {
+        color: $medium-gray;
+        font-weight: 600;
+        margin-top: 1.5rem;
+        margin-bottom: 0.5rem;
+    }
+
+    h5 {
+        font-weight: 600;
+        margin-bottom: 1em;
+    }
+
+    fieldset {
+        background: 0;
+        border: 0;
+        margin-bottom: 1rem;
+        padding: 0;
+    }
+
+    label {
+        border: 1px $medium-gray solid;
+        clear: both;
+        display: block;
+        font-size: $h5-font-size;
+        font-weight: bold;
+        line-height: 200%;
+        padding-left: 3em;
+        position: relative;
+        margin-bottom: 4px;
+
+        &:before {
+            content: ' ';
+            display: block;
+            position: absolute;
+            top: 0;
+            text-align: center;
+            left: 0;
+            bottom: 0;
+            width: 2.5em;
+            border-right: 1px $medium-gray solid;
+        }
+
+        &:hover {
+            color: lighten($base-font-color, 15);
+        }
+    }
+
+    input.choice {
+        display: none;
+
+        &:checked + label:before {
+            color: $base-font-color;
+            content: '\2714';
+        }
+    }
+
+    .button-row {
+        text-align: right;
+    }
+
+    button, input.submit {
+        display: inline-block;
+        min-width: 6.25em;
     }
 }
 
