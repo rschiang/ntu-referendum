@@ -1,0 +1,21 @@
+{% extends 'components/base.html' %}
+{% block title %}
+    NTUVote 開源社電子投票系統
+{% endblock %}
+{% block body %}
+    <section id="hero" class="hero">
+        <div class="hero-inner"></div>
+        <div id="hero-background" class="hero-background"></div>
+    </section>
+    <header>
+        <div class="header-text">
+            <h1>NTUVote</h1>
+            <p>開源社電子投票系統，為促進校園民主參與的實驗性服務。</p>
+        </div>
+    </header>
+    <div class="content">
+        <p>欲使用線上民調服務，請<a href="{% url 'auth.views.login' %}">由此登入</a>。</p>
+        <p>造訪臺灣大學開源社，請<a href="https://ntuosc.org" target="_blank">前往此處</a>。</p>
+    </div>
+    {% include 'components/footer.html' %}
+{% endblock %}

@@ -1,0 +1,45 @@
+{% extends 'components/base.html' %}
+{% block title %}
+    NTUVote 開源社電子投票系統
+{% endblock %}
+{% block body %}
+    <section id="hero" class="hero">
+        <div class="hero-inner"></div>
+        <div id="hero-background" class="hero-background"></div>
+    </section>
+    <header>
+        <div class="header-text">
+            <h1>電子民調服務</h1>
+            <p>公民投票簡稱公投，是指公民就被提議之事案，表明贊成與否時所舉行之投票，為一種直接民主制的體現。</p>
+        </div>
+    </header>
+    <div class="content">
+        <section class="cards">
+            {% for referendum in items %}
+            {% if referendum.enabled %}
+            <div class="card">
+                <div class="card-header">
+                    {% if referendum.number > 0 %}<span class="number">{{ referendum.number }}</span>{% endif %}
+                    {{ referendum.subject }}
+                </div>
+                <div class="card-copy">
+                    {{ referendum.description }}
+                </div>
+                <div class="card-stats">
+                    <ul>
+                        {% if not referendum.has_started %}
+                        <li>{{ referendum.starting_time.days }}<span>天內開始</span></li>
+                        {% elif not referendum.has_ended %}
+                        <li>{{ referendum.remaining_time.days }}<span>天後截止</span></li>
+                        {% else %}
+                        <li><span>民調已結束</span></li>
+                        {% endif %}
+                    </ul>
+                </div>
+            </div>
+            {% endif %}
+            {% endfor %}
+        </section>
+    </div>
+    {% include 'components/footer.html' %}
+{% endblock %}
