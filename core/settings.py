@@ -51,6 +51,7 @@ ROOT_URLCONF = 'core.urls'
 
 WSGI_APPLICATION = 'core.wsgi.application'
 
+LOGIN_URL = 'auth.views.login'
 
 # Database
 # https://docs.djangoproject.com/en/1.7/ref/settings/#databases
@@ -94,3 +95,6 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.7/howto/static-files/
 
 STATIC_URL = '/static/'
+
+# Per-app settings
+VOTE_VALIDATION_KEY = os.environ.get('VOTE_VALIDATION_KEY', 'CogitoErgoSum')
