@@ -1,2 +1,2 @@
-def vote(request):
+def vote(request, refid):
     pass

@@ -5,7 +5,8 @@ from django.utils import timezone
 
 class Referendum(models.Model):
     number = models.PositiveSmallIntegerField('referendum number', default=0)
-    subject = models.CharField(max_length=140)
+    title = models.CharField(max_length=70) # friendly name
+    subject = models.CharField(max_length=140)  # referendum main phrase
     description = models.CharField(max_length=210, blank=True)
     content = models.TextField(blank=True)
     created_on = models.DateTimeField(auto_now_add=True)
