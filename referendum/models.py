@@ -1,6 +1,7 @@
 from datetime import datetime
 from django.contrib.auth import get_user_model
 from django.db import models
+from django.utils import timezone
 
 class Referendum(models.Model):
     number = models.PositiveSmallIntegerField('referendum number', default=0)
@@ -11,6 +12,21 @@ class Referendum(models.Model):
     starts_on = models.DateTimeField(default=datetime.min)
     ends_on = models.DateTimeField(default=datetime.max)
     enabled = models.BooleanField(default=True)
+
+    def valid(self):
+        return self.enabled and self.has_started() and not self.has_ended()
+
+    def has_started(self):
+        return timezone.now() >= self.starts_on
+
+    def has_ended(self):
+        return self.ends_on >= timezone.now()
+
+    def starting_time(self):
+        return (self.starts_on - timezone.now())
+
+    def remaining_time(self):
+        return (timezone.now() - self.ends_on)
 
 class Option(models.Model):
     referendum = models.ForeignKey(Referendum)
