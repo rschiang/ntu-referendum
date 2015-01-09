@@ -1,2 +1,7 @@
+from django.shortcuts import render
+from referendum.models import Referendum
+
 def home(request):
-    pass
+    return render(request, 'referendum.html', {
+        'items': Referendum.objects.all(),
+    })
