@@ -1,0 +1,47 @@
+{% extends 'components/base.html' %}
+{% block title %}
+    NTUVote 開源社電子投票系統
+{% endblock %}
+{% block body %}
+    <header class="top-bar">
+        <div class="header-text">
+            <h1>電子民調服務</h1>
+        </div>
+    </header>
+    <div class="content">
+        <section class="ballot">
+            <article class="ballot-copy">
+                <h3>{% if referendum.number > 0 %}<span class="number">{{ referendum.number }}</span>{% endif %}{{ referendum.title }}</h3>
+                <p class="intro-text">
+                    {{ referendum.description }}
+                </p>
+                <div>
+                    {{ referendum.content|safe }}
+                </div>
+            </article>
+            <form class="ballot-form" method="POST" action="{% url 'referendum.views.vote' referendum.id %}">
+                <div>
+                    <h6>主文</h6>
+                    <h5>{{ referendum.subject }}</h5>
+                </div>
+                <div>
+                    <h6>請從下面選擇一個選項</h6>
+                    <fieldset>
+                        {% for option in options %}
+                        <input type="radio" class="choice {{ choice.slug }}" name="choice" id="choice-{{ option.id }}" value="{{ option.id }}">
+                        <label for="choice-{{ option.id }}">
+                            {{ option.title }}
+                            {% if option.subtitle %}<span>{{ option.subtitle }}</span>{% endif %}
+                        </label>
+                        {% endfor %}
+                    </fieldset>
+                </div>
+                <div class="button-row">
+                    <input type="submit" name="skip" class="neutral" value="略過">
+                    <input type="submit" name="submit" class="submit" value="確認">
+                </div>
+            </form>
+        </section>
+    </div>
+    {% include 'components/footer.html' %}
+{% endblock %}
