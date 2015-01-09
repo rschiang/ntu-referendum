@@ -1,2 +1,8 @@
+from django.contrib.auth.decorators import login_required
+from django.shortcuts import render
+
+@login_required
 def home(request):
-    pass
+    return render(request, 'auth.html', {
+        'user': request.user,
+    })
